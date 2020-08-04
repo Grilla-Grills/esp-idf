@@ -897,6 +897,23 @@ esp_err_t protocomm_ble_start(protocomm_t *pc, const protocomm_ble_config_t *con
     return ESP_OK;
 }
 
+esp_err_t protocomm_ble_set_manufacturer_data(uint8_t *data, uint8_t length)
+{
+    adv_data.mfg_data = data;
+    adv_data.mfg_data_len = length;
+
+    ESP_LOGI(TAG, "Setting mfg_data to:");
+    ESP_LOG_BUFFER_HEX(TAG, data, length);
+
+    if (protoble_internal != NULL) {
+        if (0 != ble_gap_adv_set_fields(&adv_data)) {
+            return ESP_FAIL;
+        }
+    }
+
+    return ESP_OK;
+}
+
 esp_err_t protocomm_ble_stop(protocomm_t *pc)
 {
     ESP_LOGD(TAG, "protocomm_ble_stop called here...");

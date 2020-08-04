@@ -88,6 +88,8 @@ typedef struct protocomm_ble_config {
  */
 esp_err_t protocomm_ble_start(protocomm_t *pc, const protocomm_ble_config_t *config);
 
+esp_err_t protocomm_ble_set_manufacturer_data(uint8_t *data, uint8_t length);
+
 /**
  * @brief   Stop Bluetooth Low Energy based transport layer for provisioning
  *
