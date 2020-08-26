@@ -1138,11 +1138,11 @@ esp_err_t wifi_prov_mgr_configure_sta(wifi_config_t *wifi_cfg)
         RELEASE_LOCK(prov_ctx_lock);
         return ESP_FAIL;
     }
-    if (prov_ctx->prov_state >= WIFI_PROV_STATE_CRED_RECV) {
-        ESP_LOGE(TAG, "Wi-Fi credentials already received by provisioning app");
-        RELEASE_LOCK(prov_ctx_lock);
-        return ESP_FAIL;
-    }
+    // if (prov_ctx->prov_state >= WIFI_PROV_STATE_CRED_RECV) {
+    //     ESP_LOGE(TAG, "Wi-Fi credentials already received by provisioning app");
+    //     RELEASE_LOCK(prov_ctx_lock);
+    //     return ESP_FAIL;
+    // }
     debug_print_wifi_credentials(wifi_cfg->sta, "Received");
 
     /* Configure Wi-Fi as both AP and/or Station */
